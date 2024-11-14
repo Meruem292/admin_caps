@@ -1,7 +1,7 @@
 <html>
 <head>
     <title>Pearl of The Orient</title>
-    
+    <?php include "../template/template.php"; ?>
 
 <link rel="shortcut icon" href="../assets/img/favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700&display=swap"rel="stylesheet">
@@ -119,7 +119,7 @@
 </head>
 <body>
 
-<?php include "../template/template.php"; ?>
+
 
 
 <div class="main-wrapper">

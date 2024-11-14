@@ -216,12 +216,14 @@ $authorizedRoles = [
                     <a href="#" style="text-decoration: none;" onclick="setActiveMenuItem(this)"><i class="fas fa-newspaper"></i> <span>Reports</span> <span
                             class="menu-arrow"></span></a>
                     <ul>
-                        <li><a href="/Admin_Caps/admin/report/students.php" style="text-decoration: none;" onclick="setActiveMenuItem(this)">Students</a></li>
+                        <li><a href="/Admin_Caps/admin/report/instructors_report.php" style="text-decoration: none;" onclick="setActiveMenuItem(this)">Instructors Report</a></li>
+                        <li><a href="/Admin_Caps/admin/report/generate_report_student.php" style="text-decoration: none;" onclick="setActiveMenuItem(this)">Student Report</a></li>
+                        <!-- <li><a href="/Admin_Caps/admin/report/students.php" style="text-decoration: none;" onclick="setActiveMenuItem(this)">Students</a></li>
                         <li><a href="/Admin_Caps/admin/report/perInstructor.php" style="text-decoration: none;" onclick="setActiveMenuItem(this)">Student List per Instructor</a></li>
                         <li><a href="/Admin_Caps/admin/report/perCourse.php" style="text-decoration: none;" onclick="setActiveMenuItem(this)">Students Enrolled per Course/Year</a></li>
                         <li><a href="/Admin_Caps/admin/report/perSubject.php" style="text-decoration: none;" onclick="setActiveMenuItem(this)">Students Enrolled per Subject</a></li>
                         <li><a href="/Admin_Caps/admin/report/perSection.php" style="text-decoration: none;" onclick="setActiveMenuItem(this)">Students Enrolled per Section</a></li>
-                        <li><a href="/Admin_Caps/admin/report/perSemester.php" style="text-decoration: none;" onclick="setActiveMenuItem(this)">Students Enrolled per Semester</a></li>
+                        <li><a href="/Admin_Caps/admin/report/perSemester.php" style="text-decoration: none;" onclick="setActiveMenuItem(this)">Students Enrolled per Semester</a></li> -->
                         <li><a href="/Admin_Caps/admin/report/systemLog.php" style="text-decoration: none;" onclick="setActiveMenuItem(this)">System Log</a></li>
                     </ul>
                 </li>
@@ -238,9 +240,6 @@ $authorizedRoles = [
         </div>
     </div>
 </div>
-
-
-
 
 
 <script>

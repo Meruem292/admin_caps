@@ -1,5 +1,5 @@
 <?php
-session_start();  // Start the session at the beginning of the file
+session_start();
 
 include 'db_conn.php';
 
@@ -7,17 +7,17 @@ function backupDatabase($pdo)
 {
     $_SESSION['status'] = 'success';
     try {
-        // Get all table names
+     
         $tables = $pdo->query("SHOW TABLES")->fetchAll(PDO::FETCH_COLUMN);
         $sqlDump = "";
 
         foreach ($tables as $table) {
-            // Add DROP TABLE and CREATE TABLE statements
+          
             $createTableQuery = $pdo->query("SHOW CREATE TABLE `$table`")->fetch(PDO::FETCH_ASSOC);
             $sqlDump .= "DROP TABLE IF EXISTS `$table`;\n";
             $sqlDump .= $createTableQuery['Create Table'] . ";\n\n";
 
-            // Insert row data
+        
             $rows = $pdo->query("SELECT * FROM `$table`");
             while ($row = $rows->fetch(PDO::FETCH_ASSOC)) {
                 $rowData = array_map([$pdo, 'quote'], $row);
