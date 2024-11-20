@@ -1,12 +1,9 @@
-
-
-
 <?php
 
 include '../database/db_conn.php'; // Include your database connection file
 
 // Fetch schedules from the database
-$query = "SELECT * FROM schedule"; // Adjust the table name as per your database
+$query = "SELECT * FROM schedule_list"; // Adjust the table name as per your database
 $result = $conn->query($query);
 
 // $instructorsQuery = "SELECT id, name FROM instructors";
@@ -39,18 +36,18 @@ $result = $conn->query($query);
 
 
 <link rel="shortcut icon" href="../assets/img/favicon.png">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700&display=swap"rel="stylesheet">
-    <link rel="stylesheet" href="../assets/plugins/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/plugins/feather/feather.css">
-    <link rel="stylesheet" href="../assets/plugins/icons/flags/flags.css">
-    <link rel="stylesheet" href="../assets/plugins/fontawesome/css/fontawesome.min.css">
-    <link rel="stylesheet" href="../assets/plugins/fontawesome/css/all.min.css">
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/plugins/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="../assets/plugins/feather/feather.css">
+<link rel="stylesheet" href="../assets/plugins/icons/flags/flags.css">
+<link rel="stylesheet" href="../assets/plugins/fontawesome/css/fontawesome.min.css">
+<link rel="stylesheet" href="../assets/plugins/fontawesome/css/all.min.css">
+<link rel="stylesheet" href="../assets/css/style.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
-    <link rel="stylesheet" href="../assets/css/bootstrap-datetimepicker.min.css">
-    <link rel="stylesheet" href="../assets/plugins/fullcalendar/fullcalendar.min.css">
+<link rel="stylesheet" href="../assets/css/bootstrap-datetimepicker.min.css">
+<link rel="stylesheet" href="../assets/plugins/fullcalendar/fullcalendar.min.css">
 
 <!-- DataTables CSS and JS -->
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
@@ -151,50 +148,50 @@ $result = $conn->query($query);
                 <div class="row"></div>
 
 
-        <div class="row">
-        <ul class="breadcrumb">
-                <li>
-                    <a href="/Admin_Caps/main.php" style="color: gray; text-decoration: none">Home</a>
-                </li>
-                <li><i class='bx bx-chevron-right' >></i></li>
-                <li>
-                    <a class="active" href="/Admin_Caps/subjects/subjects.php">Schedule</a>
-                </li>
-            </ul>
-        </div>
+                <div class="row">
+                    <ul class="breadcrumb">
+                        <li>
+                            <a href="/Admin_Caps/main.php" style="color: gray; text-decoration: none">Home</a>
+                        </li>
+                        <li><i class='bx bx-chevron-right'>></i></li>
+                        <li>
+                            <a class="active" href="/Admin_Caps/subjects/subjects.php">Schedule</a>
+                        </li>
+                    </ul>
+                </div>
 
-        <br><br>
+                <br><br>
 
-        <div class="" style="margin-top: -2%;">
-            <div class="left" style="display: flex; align-items: center;">
-                <h1>List of Schedules</h1>
-                <!-- New Button that triggers Modal -->
-                <button id="newButton" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#subjectModal" style="margin-right: auto;">New</button>
-            </div>
-        </div>
+                <div class="" style="margin-top: -2%;">
+                    <div class="left" style="display: flex; align-items: center;">
+                        <h1>List of Schedules</h1>
+                        <!-- New Button that triggers Modal -->
+                        <button id="newButton" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#subjectModal" style="margin-right: auto;">New</button>
+                    </div>
+                </div>
 
-        <!-- DataTable Structure -->
-        <div class="table-responsive">
-            <table id="applicantsTable" class="display" style="width:100%">
-                <thead>
-                    <tr>
-                        <th>Time</th>
-                        <th>Days</th>
-                        <th>Subject</th>
-                        <th>Semester</th>
-                        <th>School Year</th>
-                        <th>Course & Year</th>
-                        <th>Instructor</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                // Check if there are results
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        // Generate table rows for each record
-        echo "<tr>
+                <!-- DataTable Structure -->
+                <div class="table-responsive">
+                    <table id="applicantsTable" class="display" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Days</th>
+                                <th>Subject</th>
+                                <th>Semester</th>
+                                <th>School Year</th>
+                                <th>Course & Year</th>
+                                <th>Instructor</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            // Check if there are results
+                            if ($result->num_rows > 0) {
+                                while ($row = $result->fetch_assoc()) {
+                                    // Generate table rows for each record
+                                    echo "<tr>
                 <td>{$row['time_from']} - {$row['time_to']}</td>
                 <td>{$row['days']}</td>
                 <td>{$row['subject']}</td>
@@ -211,91 +208,86 @@ if ($result->num_rows > 0) {
                     </button>
                 </td>
               </tr>";
-    }
-} else {
-    echo "<tr><td colspan='8'>No records found.</td></tr>"; // Display a message if no records exist
-}
-?>
+                                }
+                            } else {
+                                echo "<tr><td colspan='8'>No records found.</td></tr>"; // Display a message if no records exist
+                            }
+                            ?>
 
-                </tbody>
-            </table>
-        </div>
+                        </tbody>
+                    </table>
+                </div>
+
+  <!-- The Modal -->
+                <div class="modal fade" id="subjectModal" tabindex="-1" aria-labelledby="subjectModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="subjectModalLabel">New Schedule</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <!-- Your Form Starts Here -->
+                                <form id="addScheduleForm" method="POST" action="schedule_action.php">
+                                    <input type="hidden" name="action" value="add">
+                                    <div class="mb-3">
+                                        <label for="time-from" class="form-label">From:</label>
+                                        <div class="input-group">
+                                            <input type="time" class="form-control" id="time_from" name="time_from" required>
+                                            <span class="input-group-text">To:</span>
+                                            <input type="time" class="form-control" id="time_to" name="time_to" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="days" class="form-label">Days:</label>
+                                        <input type="text" class="form-control" id="days" name="days" required>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="subject" class="form-label">Subject:</label>
+                                        <input type="text" class="form-control" id="subject" name="subject" required>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="semester" class="form-label">Semester:</label>
+                                        <select class="form-control" id="semester" name="semester" required>
+                                            <option disabled selected>--Select Semester--</option>
+                                            <option value="First">First</option>
+                                            <option value="Second">Second</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="school_year" class="form-label">School Year:</label>
+                                        <input type="text" class="form-control" id="school_year" name="school_year" required>
+                                    </div>
 
 
+                                    <div class="mb-3">
+                                        <label for="course_year" class="form-label">Course Year:</label>
+                                        <input type="text" class="form-control" id="course_year" name="course_year" required>
+                                    </div>
 
+                                    <div class="mb-3">
+                                        <label for="instructor" class="form-label">Instructor:</label>
+                                        <input type="text" class="form-control" id="instructor" name="instructor" required>
+                                    </div>
 
-
-
-        <!-- The Modal -->
-<div class="modal fade" id="subjectModal" tabindex="-1" aria-labelledby="subjectModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="subjectModalLabel">New Schedule</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <!-- Your Form Starts Here -->
-                <form id="addScheduleForm" method="POST" action="schedule_action.php">
-                    <input type="hidden" name="action" value="add">
-                    <div class="mb-3">
-                        <label for="time-from" class="form-label">From:</label>
-                        <div class="input-group">
-                            <input type="time" class="form-control" id="time_from" name="time_from" required>
-                            <span class="input-group-text">To:</span>
-                            <input type="time" class="form-control" id="time_to" name="time_to" required>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary" form="addScheduleForm">Save</button>
+                                    </div>
+                                </form>
+                                <!-- Your Form Ends Here -->
+                            </div>
                         </div>
                     </div>
-
-                    <div class="mb-3">
-                        <label for="days" class="form-label">Days:</label>
-                        <input type="text" class="form-control" id="days" name="days" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="subject" class="form-label">Subject:</label>
-                        <input type="text" class="form-control" id="subject" name="subject" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="semester" class="form-label">Semester:</label>
-                        <select class="form-control" id="semester" name="semester" required>
-                            <option disabled selected>--Select Semester--</option>
-                            <option value="First">First</option>
-                            <option value="Second">Second</option>
-                        </select>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="school_year" class="form-label">School Year:</label>
-                        <input type="text" class="form-control" id="school_year" name="school_year" required>
-                    </div>
+                </div>
 
 
-                    <div class="mb-3">
-                        <label for="course_year" class="form-label">Course Year:</label>
-                        <input type="text" class="form-control" id="course_year" name="course_year" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="instructor" class="form-label">Instructor:</label>
-                        <input type="text" class="form-control" id="instructor" name="instructor" required>
-                    </div>
-                    
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary" form="addScheduleForm">Save</button>
-            </div>
-                </form>
-                <!-- Your Form Ends Here -->
             </div>
         </div>
-    </div>
-</div>
-
-
-</div>
-</div>
 
 
 
@@ -304,75 +296,75 @@ if ($result->num_rows > 0) {
 
 
 
-<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="subjectModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="subjectModalLabel">Edit Schedule</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <!-- Your Form Starts Here -->
-                <form id="editScheduleForm">
-                <input type="hidden" name="action" value="edit">
-                <input type="hidden" name="id" id="editScheduleId">
-                    <div class="mb-3">
-                        <label for="time-from" class="form-label">From:</label>
-                        <div class="input-group">
-                            <input type="time" class="form-control" id="editTime_from" name="time_from" required>
-                            <span class="input-group-text">To:</span>
-                            <input type="time" class="form-control" id="editTime_to" name="time_to" required>
+        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="subjectModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Edit Schedule</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Your Form Starts Here -->
+                        <form id="editScheduleForm">
+                            <input type="hidden" name="action" value="edit">
+                            <input type="hidden" name="id" id="editScheduleId">
+                            <div class="mb-3">
+                                <label for="time-from" class="form-label">From:</label>
+                                <div class="input-group">
+                                    <input type="time" class="form-control" id="editTime_from" name="time_from" required>
+                                    <span class="input-group-text">To:</span>
+                                    <input type="time" class="form-control" id="editTime_to" name="time_to" required>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="days" class="form-label">Days:</label>
+                                <input type="text" class="form-control" id="editDays" name="days" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="subject" class="form-label">Subject:</label>
+                                <input type="text" class="form-control" id="editSubject" name="subject" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="semester" class="form-label">Semester:</label>
+                                <select class="form-control" id="editSemester" name="semester" required>
+                                    <option disabled selected>--Select Semester--</option>
+                                    <option value="First">First</option>
+                                    <option value="Second">Second</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="school_year" class="form-label">School Year:</label>
+                                <input type="text" class="form-control" id="editSchool_year" name="school_year" required>
+                            </div>
+
+
+                            <div class="mb-3">
+                                <label for="course_year" class="form-label">Course Year:</label>
+                                <input type="text" class="form-control" id="editCourse_year" name="course_year" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="instructor" class="form-label">Instructor:</label>
+                                <input type="text" class="form-control" id="editInstructor" name="instructor" required>
+                            </div>
+
+                        </form>
+                        <!-- Your Form Ends Here -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary" form="editScheduleForm">Save</button>
                         </div>
                     </div>
-
-                    <div class="mb-3">
-                        <label for="days" class="form-label">Days:</label>
-                        <input type="text" class="form-control" id="editDays" name="days" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="subject" class="form-label">Subject:</label>
-                        <input type="text" class="form-control" id="editSubject" name="subject" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="semester" class="form-label">Semester:</label>
-                        <select class="form-control" id="editSemester" name="semester" required>
-                            <option disabled selected>--Select Semester--</option>
-                            <option value="First">First</option>
-                            <option value="Second">Second</option>
-                        </select>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="school_year" class="form-label">School Year:</label>
-                        <input type="text" class="form-control" id="editSchool_year" name="school_year" required>
-                    </div>
-
-
-                    <div class="mb-3">
-                        <label for="course_year" class="form-label">Course Year:</label>
-                        <input type="text" class="form-control" id="editCourse_year" name="course_year" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="instructor" class="form-label">Instructor:</label>
-                        <input type="text" class="form-control" id="editInstructor" name="instructor" required>
-                    </div>
-                    
-                </form>
-                <!-- Your Form Ends Here -->
-                <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary" form="editScheduleForm">Save</button>
-            </div>
+                </div>
             </div>
         </div>
+
+
     </div>
-</div>
-
-
-</div>
 </div>
 
 
@@ -380,20 +372,20 @@ if ($result->num_rows > 0) {
 
 
 <div class="footer">
-            <div class="copyright">
-                <p style="font-size: 15px; color: grey;">Pearl of The Orient</p>
-            </div>
-        </div>
-
-
-        </div>
-            </div>
-        </div>
+    <div class="copyright">
+        <p style="font-size: 15px; color: grey;">Pearl of The Orient</p>
     </div>
 </div>
 
 
-        <script>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script>
     var jq = jQuery.noConflict();
     jq(document).ready(function() {
         jq('#applicantsTable').DataTable();
@@ -403,39 +395,38 @@ if ($result->num_rows > 0) {
 
 
 <script>
+    var jq = jQuery.noConflict();
+    jq(document).ready(function() {
+        var table = jq('#applicantsTable').DataTable();
 
-var jq = jQuery.noConflict();
-jq(document).ready(function() {
-    var table = jq('#applicantsTable').DataTable();
-
-    // Handle form submission for adding new user
-    jq('#addScheduleForm').on('submit', function(e) {
-        e.preventDefault();
-        var formData = jq(this).serialize() + "&action=add";
-        jq.ajax({
-            url: 'schedule_action.php',
-            type: 'POST',
-            data: formData,
-            dataType: 'json',
-            success: function(response) {
-                if (response.status === 'success') {
-                    // alert('User  added successfully: ' + response.message);
-                    Swal.fire({
-                    icon: 'success',
-                    title: 'User Added',
-                    text: response.message,
-                    confirmButtonText: 'OK'
-                }).then(() => {
-                    location.reload(); // Refresh the page after closing the SweetAlert
-                });
-                    // location.reload();
-                } else {
-                    alert('Error adding user: ' + response.message); // Use alert instead of SweetAlert
+        // Handle form submission for adding new user
+        jq('#addScheduleForm').on('submit', function(e) {
+            e.preventDefault();
+            var formData = jq(this).serialize() + "&action=add";
+            jq.ajax({
+                url: 'schedule_action.php',
+                type: 'POST',
+                data: formData,
+                dataType: 'json',
+                success: function(response) {
+                    if (response.status === 'success') {
+                        // alert('User  added successfully: ' + response.message);
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'User Added',
+                            text: response.message,
+                            confirmButtonText: 'OK'
+                        }).then(() => {
+                            location.reload(); // Refresh the page after closing the SweetAlert
+                        });
+                        // location.reload();
+                    } else {
+                        alert('Error adding user: ' + response.message); // Use alert instead of SweetAlert
+                    }
                 }
-            }
+            });
         });
     });
-});
 
 
 
@@ -450,14 +441,17 @@ jq(document).ready(function() {
 
 
 
-// Handle edit button click
-jq(document).on('click', '.btn-warning', function() {
+    // Handle edit button click
+    jq(document).on('click', '.btn-warning', function() {
         var id = jq(this).data('id');
         // Fetch user data and populate the edit form
         jq.ajax({
             url: 'schedule_action.php',
             type: 'POST',
-            data: { id: id, action: 'fetch' }, // Add a fetch action
+            data: {
+                id: id,
+                action: 'fetch'
+            }, // Add a fetch action
             dataType: 'json',
             success: function(response) {
                 if (response.status === 'success') {
@@ -527,7 +521,10 @@ jq(document).on('click', '.btn-warning', function() {
                 jq.ajax({
                     url: 'schedule_action.php',
                     type: 'POST',
-                    data: { id: id, action: 'delete' },
+                    data: {
+                        id: id,
+                        action: 'delete'
+                    },
                     dataType: 'json',
                     success: function(response) {
                         if (response.status === 'success') {
@@ -547,12 +544,12 @@ jq(document).on('click', '.btn-warning', function() {
 
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-    <script src="../assets/js/jquery-3.6.0.min.js"></script>
+<script src="../assets/js/jquery-3.6.0.min.js"></script>
 
-    <script src="../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <script src="../assets/js/feather.min.js"></script>
+<script src="../assets/js/feather.min.js"></script>
 
-    <script src="../assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="../assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
-    <script src="../assets/js/script.js"></script>
+<script src="../assets/js/script.js"></script>
