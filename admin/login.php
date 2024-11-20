@@ -40,7 +40,7 @@ if (isset($_POST['uname']) && isset($_POST['password'])) {
                 $_SESSION['admin_username']   = $row['username'];
                 $_SESSION['admin_name']       = $row['name'];
                 $_SESSION['role']             = $row['role'];
-                $_SESSION['admin_username'] = $username; // Set the username
+                // $_SESSION['admin_username'] = $username; // Set the username
                 $_SESSION['name'] = $admin_name; // Set the name
                 // $_SESSION['role'] = $role; 
                 $_SESSION['admin_logged_in']  = true;

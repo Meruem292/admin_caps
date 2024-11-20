@@ -53,7 +53,7 @@
 
 
 
-<?php include '../template/template.php'; ?>
+
 
         <div class="container">
 

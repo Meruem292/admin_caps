@@ -191,7 +191,7 @@ $authorizedRoles = [
                     <a href="/Admin_Caps/admin/diploma/diploma.php" style="text-decoration: none;" onclick="setActiveMenuItem(this)"><i class="fas fa-file"></i> <span>ID Generation</span></a>
                 </li>
                 <li>
-                    <a href="/Admin_Caps/admin/certificate/indexs.php" style="text-decoration: none;" onclick="setActiveMenuItem(this)"><i class="fa fa-certificate"></i> <span>Certificates Generation</span></a>
+                    <a href="/Admin_Caps/admin/certificate/index.php" style="text-decoration: none;" onclick="setActiveMenuItem(this)"><i class="fa fa-certificate"></i> <span>Certificates Generation</span></a>
                 </li>
                 <li>
                     <a href="/Admin_Caps/admin/diploma/diploma.php" style="text-decoration: none;" onclick="setActiveMenuItem(this)"><i class="fas fa-file"></i> <span>Diploma Generation</span></a>
@@ -234,7 +234,7 @@ $authorizedRoles = [
                     <a href="/Admin_Caps/admin/users/users.php" style="text-decoration: none;" onclick="setActiveMenuItem(this)"><i class="fa fa-users"></i> <span>Users</span></a>
                 </li>
                 <li>
-                    <a href="/Admin_Caps/admin/backup/backup.php" style="text-decoration: none;" onclick="setActiveMenuItem(this)"><i class="fas fa-database"></i> <span>Backup And Restore</span></a>
+                    <a hre="/Admin_Caps/admin/backup/backup.php" style="text-decoration: none;" onclick="setActiveMenuItem(this)"><i class="fas fa-database"></i> <span>Backup And Restore</span></a>
                 </li>
             </ul>
         </div>

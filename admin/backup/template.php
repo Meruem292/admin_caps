@@ -1,6 +1,3 @@
-tmeplate
-
-
 <?php
 session_name("admin_session");
 session_start();
@@ -10,9 +7,6 @@ if (!isset($_SESSION['admin_username'])) {
     header("Location: index.php?error=You must log in first");
     exit();
 }
-
-
-
 
 $admin_name = $_SESSION['name'];
 $role = $_SESSION['role'];
@@ -232,14 +226,16 @@ $authorizedRoles = [
                     <a href="/Admin_Caps/admin/users/users.php" style="text-decoration: none;" onclick="setActiveMenuItem(this)"><i class="fa fa-users"></i> <span>Users</span></a>
                 </li>
                 <li>
+                    <a href="/Admin_Caps/admin/backup/backup.php" style="text-decoration: none;"><i class="fa fa-cogs"></i> <span>Backup And Restore</span>
+                    </a>
+                </li>
+                <li>
                     <a href="/Admin_Caps/admin/backup/backup.php" style="text-decoration: none;" onclick="setActiveMenuItem(this)"><i class="fas fa-database"></i> <span>Backup And Restore</span></a>
                 </li>
             </ul>
         </div>
     </div>
 </div>
-
-
 
 
 

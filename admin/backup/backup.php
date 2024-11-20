@@ -7,17 +7,17 @@ function backupDatabase($pdo)
 {
     $_SESSION['status'] = 'success';
     try {
-     
+
         $tables = $pdo->query("SHOW TABLES")->fetchAll(PDO::FETCH_COLUMN);
         $sqlDump = "";
 
         foreach ($tables as $table) {
-          
+
             $createTableQuery = $pdo->query("SHOW CREATE TABLE `$table`")->fetch(PDO::FETCH_ASSOC);
             $sqlDump .= "DROP TABLE IF EXISTS `$table`;\n";
             $sqlDump .= $createTableQuery['Create Table'] . ";\n\n";
 
-        
+
             $rows = $pdo->query("SELECT * FROM `$table`");
             while ($row = $rows->fetch(PDO::FETCH_ASSOC)) {
                 $rowData = array_map([$pdo, 'quote'], $row);
@@ -120,8 +120,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 ?>
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<?php include 'template.php'; ?>
+<?php include '../template/template.php'; ?>
 
 <link rel="shortcut icon" href="../assets/img/favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700&display=swap" rel="stylesheet">
@@ -132,10 +131,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <link rel="stylesheet" href="../assets/plugins/fontawesome/css/all.min.css">
 <link rel="stylesheet" href="../assets/css/style.css">
 <link rel="stylesheet" href="../assets/css/applicants.css">
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 
 <link rel="stylesheet" href="../assets/css/bootstrap-datetimepicker.min.css">
 <link rel="stylesheet" href="../assets/plugins/fullcalendar/fullcalendar.min.css">
@@ -229,9 +225,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </script>
         <?php endif; ?>
 
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
         <script>
             function openRestoreModal() {
                 $('#restoreModal').modal('show');
